@@ -1,0 +1,179 @@
+swagger: "2.0"
+info:
+  title: "爱奇艺API"
+  version: "1.0"
+host: "andiedie.cn:9000"
+basePath: "/v2"
+
+schemes:
+- "http"
+paths:
+  /getChannels:
+    get:
+      summary: 获取频道列表
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                desc:
+                  type: string
+  /getChannelDetail:
+    get:
+      summary: 获取频道详情
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              channelId:
+                type: string
+              channelName:
+                type: string
+              total:
+                type: string
+              video_list:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    a_id:
+                      type: string
+                    date_format:
+                      type: string
+                    date_timestamp:
+                      type: string
+                    id:
+                      type: string
+                    img:
+                      type: string
+                    is_vip:
+                      type: string
+                    play_count:
+                      type: string
+                    play_count_text:
+                      type: string
+                    p_type:
+                      type: string
+                    short_title:
+                      type: string
+                    sns_score:
+                      type: string
+                    title:
+                      type: string
+                    total_num:
+                      type: string
+                    tv_id:
+                      type: string
+                    type:
+                      type: string
+                    update_num:
+                      type: string
+  /getRecommends:
+    get:
+      summary: 获取推荐内容
+      description: 数组第一项为轮播图
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                title:
+                  type: string
+                channelId:
+                  type: string
+                  description: 轮播图没有
+                channelName:
+                  type: string
+                  description: 轮播图没有
+                video_list:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      a_id:
+                        type: string
+                      date_format:
+                        type: string
+                      date_timestamp:
+                        type: string
+                      id:
+                        type: string
+                      img:
+                        type: string
+                      is_vip:
+                        type: string
+                      play_count:
+                        type: string
+                      play_count_text:
+                        type: string
+                      p_type:
+                        type: string
+                      short_title:
+                        type: string
+                      sns_score:
+                        type: string
+                      title:
+                        type: string
+                      total_num:
+                        type: string
+                      tv_id:
+                        type: string
+                      type:
+                        type: string
+                      update_num:
+                        type: string
+  /search:
+    get:
+      summary: 搜索
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                a_id:
+                  type: string
+                date_format:
+                  type: string
+                date_timestamp:
+                  type: string
+                id:
+                  type: string
+                img:
+                  type: string
+                is_vip:
+                  type: string
+                play_count:
+                  type: string
+                play_count_text:
+                  type: string
+                p_type:
+                  type: string
+                short_title:
+                  type: string
+                sns_score:
+                  type: string
+                title:
+                  type: string
+                total_num:
+                  type: string
+                tv_id:
+                  type: string
+                type:
+                  type: string
+                update_num:
+                  type: string
