@@ -1,10 +1,11 @@
 <template>
   <div id="app">
-    <mt-swipe class="carousel" :auto="5000">
-      <mt-swipe-item v-for="item in carousel" :key="item.id">
+    <swiper :options="swiperOption">
+      <swiper-slide v-for="item in carousel" :key="item.id">
         <img class="carousel-img" :src="item.img">
-      </mt-swipe-item>
-    </mt-swipe>
+      </swiper-slide>
+      <div class="swiper-pagination" slot="pagination"></div>
+    </swiper>
     <!-- <router-view></router-view> -->
   </div>
 </template>
@@ -13,7 +14,13 @@
 import { mapState } from 'vuex';
 export default {
   data () {
-    return {};
+    return {
+      swiperOption: {
+        autoplay: 2000,
+        pagination: '.swiper-pagination',
+        loop: true
+      }
+    };
   },
   computed: {
     ...mapState({
@@ -28,9 +35,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .carousel {
-//   height: 500px;
-// }
 .carousel-img {
   width: 100%;
 }

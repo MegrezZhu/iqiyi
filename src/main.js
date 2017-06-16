@@ -7,8 +7,11 @@ import store from './store';
 import MintUI from 'mint-ui';
 import 'mint-ui/lib/style.css';
 
+import VueAwesomeSwiper from 'vue-awesome-swiper';
+
 Vue.use(Vuex);
 Vue.use(MintUI);
+Vue.use(VueAwesomeSwiper);
 Vue.prototype.$http = axios;
 Vue.config.productionTip = false;
 
