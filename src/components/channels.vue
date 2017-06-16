@@ -57,7 +57,7 @@ export default {
       let channel = this.channels[this.selectedChannel].name;
       if (!this.videoList[channel]) {
         await this.$store.dispatch('updateVideoList', {
-          channel: this.channels[this.selectedChannel].name
+          name: this.channels[this.selectedChannel].name
         });
       }
     }

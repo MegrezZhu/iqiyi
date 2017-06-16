@@ -20,8 +20,8 @@ const actions = {
     recommends.splice(0, 1);
     commit('updateRecommend', recommends);
   },
-  async updateVideoList ({commit}, {channel: name}) {
-    let result = await iqiyi.getChannelDetail(name);
+  async updateVideoList ({commit}, {name, mode}) {
+    let result = await iqiyi.getChannelDetail(name, mode);
     commit('updateVideoList', {
       channel: name,
       list: result.video_list
