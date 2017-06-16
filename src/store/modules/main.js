@@ -3,7 +3,8 @@ import iqiyi from '@/utils/iqiyi';
 const state = {
   channels: [],
   recommends: [],
-  carousel: []
+  carousel: [],
+  videoList: {}
 };
 
 const getters = {};
@@ -18,6 +19,13 @@ const actions = {
     commit('updateCarousel', recommends[0].video_list);
     recommends.splice(0, 1);
     commit('updateRecommend', recommends);
+  },
+  async updateVideoList ({commit}, {channel: name}) {
+    let result = await iqiyi.getChannelDetail(name);
+    commit('updateVideoList', {
+      channel: name,
+      list: result.video_list
+    });
   }
 };
 
@@ -30,6 +38,9 @@ const mutations = {
   },
   updateCarousel (state, carousel) {
     state.carousel = carousel;
+  },
+  updateVideoList (state, {channel, list}) {
+    state.videoList[channel] = list;
   }
 };
 

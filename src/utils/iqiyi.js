@@ -1,10 +1,5 @@
 import axios from 'axios';
 import assert from 'assert';
-const ajax = axios.create({
-  headers: {
-    'Accept': '*/*'
-  }
-});
 
 const defaultParam = {
   app_k: 'f0f6c3ee5709615310c0f053dc9c65f2',
@@ -26,10 +21,11 @@ const defaultParam = {
   req_times: 1,
   version: '7.5'
 };
-const baseUrl = 'http://iface.qiyi.com/openapi/batch/';
+const baseUrl = 'http://iface.qiyi.com/openapi/batch';
 
 async function fetch (url, param) {
-  const {data} = await ajax.get(baseUrl + url, {
+  console.log(url);
+  const {data} = await axios.get(baseUrl + url, {
     params: Object.assign(defaultParam, param)
   });
   assert(data.code === 100000 || data.code === 0, `api response: code error: ${data}`);
@@ -40,7 +36,7 @@ async function fetch (url, param) {
  * @returns {Promise}
  */
 const getChannels = async () => {
-  return fetch('channel', {
+  return fetch('/channel', {
     type: 'list'
   });
 };
@@ -51,7 +47,7 @@ const getChannels = async () => {
  * @returns {Promise}
  */
 const getChannelDetail = async (name, mode = 1) => {
-  return fetch('channel', {
+  return fetch('/channel', {
     type: 'detail',
     channel_name: name
   });
@@ -61,7 +57,7 @@ const getChannelDetail = async (name, mode = 1) => {
  * @returns {Promise}
  */
 const getRecommends = async () => {
-  return fetch('recommend');
+  return fetch('/recommend');
 };
 
 /**
@@ -69,7 +65,7 @@ const getRecommends = async () => {
  * @returns {Promise}
  */
 const search = async key => {
-  return fetch('search', {
+  return fetch('/search', {
     key,
     from: 'mobile_list'
   });
