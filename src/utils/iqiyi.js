@@ -39,12 +39,22 @@ function encodeUrlQueries (obj) {
   return '?' + param.slice(1);
 }
 
+/**
+ *
+ * @returns {Promise}
+ */
 exports.getChannels = async () => {
   return fetch('channel', {
     type: 'list'
   });
 };
 
+/**
+ *
+ * @param name : name of channel, in Chinese. i.e '电影'
+ * @param mode : mode of sorting, see api pdf, page 5
+ * @returns {Promise}
+ */
 exports.getChannelDetail = async (name, mode = 1) => {
   return fetch('channel', {
     type: 'detail',
@@ -52,10 +62,19 @@ exports.getChannelDetail = async (name, mode = 1) => {
   });
 };
 
+/**
+ *
+ * @returns {Promise}
+ */
 exports.getRecommends = async () => {
   return fetch('recommend');
 };
 
+/**
+ *
+ * @param key : key for searching
+ * @returns {Promise}
+ */
 exports.search = async key => {
   return fetch('search', {
     key,
