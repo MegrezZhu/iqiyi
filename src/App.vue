@@ -1,23 +1,37 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view></router-view>
+    <mt-swipe class="carousel" :auto="5000">
+      <mt-swipe-item v-for="item in carousel" :key="item.id">
+        <img class="carousel-img" :src="item.img">
+      </mt-swipe-item>
+    </mt-swipe>
+    <!-- <router-view></router-view> -->
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
-  name: 'app'
+  data () {
+    return {};
+  },
+  computed: {
+    ...mapState({
+      carousel: state => state.main.carousel
+    })
+  },
+  methods: {},
+  created () {
+    this.$store.dispatch('updateRecommend');
+  }
 };
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss" scoped>
+// .carousel {
+//   height: 500px;
+// }
+.carousel-img {
+  width: 100%;
 }
 </style>

@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "require-indexify": "^1.0.0",
+    "mint-ui": "^2.2.7",
     "vue": "^2.3.3",
     "vue-router": "^2.3.1",
     "vuex": "^2.3.1"

@@ -1,6 +1,6 @@
-const axios = require('axios');
-const assert = require('assert');
-const {URL, resolve} = require('url');
+import axios from 'axios';
+import assert from 'assert';
+import {resolve} from 'url';
 
 const defaultParam = {
   app_k: 'f0f6c3ee5709615310c0f053dc9c65f2',
@@ -20,42 +20,33 @@ const defaultParam = {
   core: 1,
   req_sn: 1493946331320,
   req_times: 1,
-  version: '7.5' // client version
+  version: '7.5'
 };
-const baseUrl = 'http://iface.qiyi.com/openapi/realtime/';
+const baseUrl = 'http://iface.qiyi.com/openapi/batch/';
 
 async function fetch (url, param) {
-  let obj = Object.assign({}, defaultParam, param);
-  const {data} = await axios.get(new URL(resolve(baseUrl, url) + encodeUrlQueries(obj)).toString());
+  const {data} = await axios.get(resolve(baseUrl, url), {
+    params: Object.assign({}, defaultParam, param)
+  });
   assert(data.code === 100000 || data.code === 0, `api response: code error: ${data}`);
   return data.data;
 }
 
-function encodeUrlQueries (obj) {
-  let param = '';
-  for (let key of Object.keys(obj)) {
-    param += '&' + key + '=' + obj[key];
-  }
-  return '?' + param.slice(1);
-}
-
 /**
- *
  * @returns {Promise}
  */
-exports.getChannels = async () => {
+const getChannels = async () => {
   return fetch('channel', {
     type: 'list'
   });
 };
 
 /**
- *
  * @param name : name of channel, in Chinese. i.e '电影'
  * @param mode : mode of sorting, see api pdf, page 5
  * @returns {Promise}
  */
-exports.getChannelDetail = async (name, mode = 1) => {
+const getChannelDetail = async (name, mode = 1) => {
   return fetch('channel', {
     type: 'detail',
     channel_name: name
@@ -63,21 +54,26 @@ exports.getChannelDetail = async (name, mode = 1) => {
 };
 
 /**
- *
  * @returns {Promise}
  */
-exports.getRecommends = async () => {
+const getRecommends = async () => {
   return fetch('recommend');
 };
 
 /**
- *
  * @param key : key for searching
  * @returns {Promise}
  */
-exports.search = async key => {
+const search = async key => {
   return fetch('search', {
     key,
     from: 'mobile_list'
   });
+};
+
+export default {
+  getChannels,
+  getChannelDetail,
+  getRecommends,
+  search
 };
