@@ -1,6 +1,10 @@
 import axios from 'axios';
 import assert from 'assert';
-import {resolve} from 'url';
+const ajax = axios.create({
+  headers: {
+    'Accept': '*/*'
+  }
+});
 
 const defaultParam = {
   app_k: 'f0f6c3ee5709615310c0f053dc9c65f2',
@@ -25,8 +29,8 @@ const defaultParam = {
 const baseUrl = 'http://iface.qiyi.com/openapi/batch/';
 
 async function fetch (url, param) {
-  const {data} = await axios.get(resolve(baseUrl, url), {
-    params: Object.assign({}, defaultParam, param)
+  const {data} = await ajax.get(baseUrl + url, {
+    params: Object.assign(defaultParam, param)
   });
   assert(data.code === 100000 || data.code === 0, `api response: code error: ${data}`);
   return data.data;
