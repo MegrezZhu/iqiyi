@@ -32,7 +32,13 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style  type="text/scss" lang="scss" scoped>
+.hello {
+  h1 {
+    color: yellow;
+  }
+}
+
 h1, h2 {
   font-weight: normal;
 }
