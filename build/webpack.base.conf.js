@@ -2,6 +2,7 @@ let path = require('path');
 let utils = require('./utils');
 let config = require('../config');
 let vueLoaderConfig = require('./vue-loader.conf');
+const isProd = process.env.NODE_ENV === 'production';
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir);
@@ -14,7 +15,7 @@ module.exports = {
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
+    publicPath: isProd === 'production'
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
   },
