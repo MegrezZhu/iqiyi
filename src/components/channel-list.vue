@@ -1,9 +1,6 @@
 <template lang="html">
   <div class="channel-list">
     <swiper :options="swiperOption" ref="channelSwiper">
-      <swiper-slide class="channel">
-        Search
-      </swiper-slide>
       <swiper-slide v-for="(channel, index) in channels" class="channel">
         <div>{{channel.name}}</div>
       </swiper-slide>
@@ -19,14 +16,18 @@
         swiperOption: {
           notNextTick: true,
           direction: 'vertical',
-          height: 150,
+          height: 100,
           onTransitionStart: swiper => {
             if (this.activeIndex !== swiper.activeIndex) {
-              this.activeIndex = swiper.activeIndex;
+              let index = this.activeIndex = swiper.activeIndex;
+              let currentChannel = this.channels[this.activeIndex];
               this.$emit('changed', {
                 id: this.activeIndex,
-                channel: this.channels[this.activeIndex]
+                channel: currentChannel
               });
+              console.log(currentChannel);
+              this.$store.commit('updateCurrentChannel', index);
+              this.$store.dispatch('updateVideoList');
             }
           }
         },
@@ -68,7 +69,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20pt;
+      font-size: 18pt;
       text-align: center;
     }
   }

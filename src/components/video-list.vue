@@ -14,21 +14,21 @@
 <script>
 export default {
   data () {
-    return {
-      videoList: []
-    };
+    return {};
   },
-  computed: {},
+  computed: {
+    videoList () {
+      return this.$store.getters.currentVideos;
+    }
+  },
   methods: {},
   async created () {
     await this.$store.dispatch('updateVideoList');
-    let state = this.$store.state;
-    this.videoList = state.videoList[state.currentChannel];
   }
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" type="text/scss">
 .video-list {
   .video-img {
     height: 100%;

@@ -9,7 +9,10 @@ export default {
     state.carousel = carousel;
   },
   updateVideoList (state, {channel, list}) {
-    state.videoList[channel] = list;
+    state.videoList = {
+      ...state.videoList,
+      [channel]: list
+    };
   },
   updateCurrentChannel (state, currentChannel) {
     state.currentChannel = currentChannel;
