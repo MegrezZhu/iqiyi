@@ -15,7 +15,7 @@
         <div class="video-item">
           <img class="video-img-bg" :src="video.img">
           <div class="video-img-mask"></div>
-          <div class="play-button">立即播放</div>
+          <div @click="play(video)" class="play-button">立即播放</div>
           <div class="video-detail">
             <div class="video-name">{{video.title}}</div>
             <div class="video-score">评分：<span class="number">{{video.sns_score}}</span></div>
@@ -37,7 +37,10 @@ export default {
       }
     };
   },
-  mounted () {
+  methods: {
+    play ({a_id: aid, tv_id: tvid}) {
+      location.href = `iqiyi://mobile/player?aid=${aid}&tvid=${tvid}&ftype=27&to=3&url=${encodeURIComponent(location.href)}`;
+    }
   }
 };
 </script>
@@ -111,6 +114,7 @@ export default {
     line-height: 40px;
     font-size: 13.5pt;
     border-radius: 8%;
+    z-index: 2;
   }
   .video-info {
     margin-left: 10px;
