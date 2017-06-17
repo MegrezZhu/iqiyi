@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import channels from '@/components/channels';
+import videoList from '@/components/video-list';
 
 Vue.use(Router);
 
@@ -8,8 +8,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'channels',
-      component: channels
+      name: 'video-list',
+      component: videoList
     }
   ]
 });
