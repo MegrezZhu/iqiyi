@@ -70,7 +70,7 @@ export default {
   }
   .mask {
     position: absolute;
-    width: 30%;
+    width: 20%;
     height: 100%;
     left: 30%;
     top: 0;
