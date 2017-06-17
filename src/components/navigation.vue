@@ -59,7 +59,8 @@ export default {
     width: 30%;
   }
   .video-img {
-    height: 100%;
+    width: 174px;
+    height: 130px;
   }
   .video-item {
     height: 100%;
@@ -69,7 +70,6 @@ export default {
   }
   .mask {
     position: absolute;
-    background-color: red;
     width: 30%;
     height: 100%;
     left: 30%;
