@@ -21,8 +21,8 @@ const defaultParam = {
   req_times: 1,
   version: '7.5'
 };
-// const baseUrl = 'http://iface.qiyi.com/openapi/batch';
-const baseUrl = 'http://andiedie.cn:9000/openapi/batch';
+const baseUrl = 'http://iface.qiyi.com/openapi/batch';
+// const baseUrl = 'http://andiedie.cn:9000/openapi/batch';
 
 async function fetch (url, param) {
   const {data} = await axios.get(baseUrl + url, {
