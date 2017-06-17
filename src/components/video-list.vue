@@ -27,7 +27,8 @@ export default {
 
 <style lang="scss" type="text/scss">
 .video-list {
-  overflow: scroll;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
   height: 100%;
 }
 </style>
