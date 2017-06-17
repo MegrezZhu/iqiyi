@@ -51,7 +51,6 @@ export default {
   }
 
   .left-list {
-    min-width: 150px;
     width: 30%;
   }
   .video-img {
