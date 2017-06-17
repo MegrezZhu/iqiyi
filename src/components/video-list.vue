@@ -8,9 +8,12 @@
 import videoItem from './video-item.vue';
 export default {
   data () {
-    return {
-      videoList: []
-    };
+    return {};
+  },
+  computed: {
+    videoList () {
+      return this.$store.getters.currentVideos;
+    }
   },
   components: {
     'video-item': videoItem
@@ -18,13 +21,11 @@ export default {
   methods: {},
   async created () {
     await this.$store.dispatch('updateVideoList');
-    let state = this.$store.state;
-    this.videoList = state.videoList[state.currentChannel];
   }
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" type="text/scss">
 .video-list {
 }
 </style>
