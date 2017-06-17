@@ -27,7 +27,6 @@ export default {
               id: this.activeIndex,
               channel: currentChannel
             });
-            console.log(currentChannel);
             this.$store.commit('updateCurrentChannel', index);
             this.$store.dispatch('updateVideoList');
           }

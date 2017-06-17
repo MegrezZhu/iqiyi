@@ -7,6 +7,9 @@
       <swiper-slide>
         <video-list></video-list>
       </swiper-slide>
+      <div class="mask-container">
+        <div :class="[{ 'mask-all': isSwiperOpen }, 'mask']"></div>
+      </div>
     </swiper>
   </div>
 </template>
@@ -18,11 +21,15 @@ export default {
   data () {
     return {
       videoList: [],
+      isSwiperOpen: true,
       menuSwiperOption: {
         slidesPerView: 'auto',
         initialSlide: 1,
         resistanceRatio: 0.1,
-        slideToClickedSlide: true
+        slideToClickedSlide: true,
+        onSlideChangeEnd: ({activeIndex}) => {
+          this.isSwiperOpen = !activeIndex;
+        }
       }
     };
   },
@@ -52,6 +59,19 @@ export default {
   }
   .video-item {
     height: 100%;
+  }
+  .mask-container {
+    z-index: 10;
+  }
+  .mask {
+    position: absolute;
+    width: 20%;
+    height: 100%;
+    left: 30%;
+    top: 0;
+  }
+  .mask-all {
+    width: 70%;
   }
 }
 </style>
