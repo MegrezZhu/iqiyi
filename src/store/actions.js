@@ -23,10 +23,13 @@ export default {
       await dispatch('updateChannels');
     }
     let name = state.channels[state.currentChannel].name;
-    let result = await iqiyi.getChannelDetail(name);
+    let {video_list} = await iqiyi.getChannelDetail(name);
+    video_list.forEach(video => {
+      video.img = video.img.substr(0, video.img.length - 4) + '_480_360.jpg?sign=iqiyi';
+    });
     commit('updateVideoList', {
       channel: state.currentChannel,
-      list: result.video_list
+      list: video_list
     });
   }
 };
