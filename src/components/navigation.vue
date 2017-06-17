@@ -35,8 +35,14 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" type="text/scss">
 .navigation {
+  height: 100%;
+
+  .swiper-wrapper, .swiper-container {
+    height: 100%;
+  }
+
   .channel-list {
     min-width: 150px;
     width: 30%;
