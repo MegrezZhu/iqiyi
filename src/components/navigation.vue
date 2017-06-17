@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="navigation">
     <swiper :options="menuSwiperOption">
-      <swiper-slide class="channel-list">
+      <swiper-slide class="left-list">
         <channel-list></channel-list>
       </swiper-slide>
       <swiper-slide>
@@ -50,7 +50,7 @@ export default {
     height: 100%;
   }
 
-  .channel-list {
+  .left-list {
     min-width: 150px;
     width: 30%;
   }

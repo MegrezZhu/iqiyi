@@ -19,7 +19,7 @@ export default {
         notNextTick: true,
         direction: 'vertical',
         height: 100,
-        onTransitionEnd: debounce(swiper => {
+        onSlideChangeEnd: debounce(swiper => {
           if (this.activeIndex !== swiper.activeIndex) {
             let index = this.activeIndex = swiper.activeIndex;
             let currentChannel = this.channels[this.activeIndex];
