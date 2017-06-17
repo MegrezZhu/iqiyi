@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="navigation">
-    <swiper :options="menuSwiperOption">
+    <swiper :options="menuSwiperOption" ref="swiper">
       <swiper-slide class="left-list">
         <channel-list></channel-list>
       </swiper-slide>
@@ -8,7 +8,7 @@
         <video-list></video-list>
       </swiper-slide>
       <div class="mask-container">
-        <div :class="[{ 'mask-all': isSwiperOpen }, 'mask']"></div>
+        <div @click="slideBack" :class="[{ 'mask-all': isSwiperOpen }, 'mask']"></div>
       </div>
     </swiper>
   </div>
@@ -37,8 +37,13 @@ export default {
     'channel-list': channelList,
     'video-list': videoList
   },
-  computed: {},
-  methods: {}
+  methods: {
+    slideBack () {
+      if (this.isSwiperOpen) {
+        this.$refs.swiper.swiper.slideTo(1);
+      }
+    }
+  }
 };
 </script>
 
@@ -64,7 +69,8 @@ export default {
   }
   .mask {
     position: absolute;
-    width: 20%;
+    background-color: red;
+    width: 30%;
     height: 100%;
     left: 30%;
     top: 0;
